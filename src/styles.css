@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #ee4037;
+  --primary-hover-color: #eb564e;
+  --contrast-color: #ffffff;
+}
+
+body {
+  background-color: var(--contrast-color) !important;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo del App Bar */
+.p-toolbar {
+  --p-toolbar-background: var(--primary-color);
+  --p-toolbar-border-color: var(--primary-color);
+  --p-toolbar-border-radius: 0;
+}
+
+/* Estilo de los botones */
+.p-button {
+  background-color: var(--primary-color) !important;
+  font-size: 1.3rem !important;
+  border: none !important;
+  color: var(--contrast-color) !important;
+}
+
+.p-button:hover {
+  background-color: var(--primary-hover-color) !important;
+}
