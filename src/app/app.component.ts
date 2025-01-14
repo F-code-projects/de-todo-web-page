@@ -6,27 +6,46 @@ import { SelectModule } from 'primeng/select';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "./layout/header/header.component";
+import { HeaderComponent } from './layout/header/header.component';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { ItemsService } from './features/items/services/items.service';
+import { ItemsPageComponent } from './features/items/pages/items.page.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DatePickerModule, SelectModule, FormsModule, CommonModule, DialogModule, ButtonModule, HeaderComponent],
+  imports: [
+    RouterOutlet,
+    DatePickerModule,
+    SelectModule,
+    FormsModule,
+    CommonModule,
+    DialogModule,
+    ButtonModule,
+    HeaderComponent,
+],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-animations: any[]|undefined;
-animation: any;
-dynamicAnimationClasses: string|string[]|Set<string>|{ [klass: string]: any; }|null|undefined;
-showDialog() {
-throw new Error('Method not implemented.');
-}
-closeDialog() {
-throw new Error('Method not implemented.');
-}
+  animations: any[] | undefined;
+  animation: any;
+  dynamicAnimationClasses:
+    | string
+    | string[]
+    | Set<string>
+    | { [klass: string]: any }
+    | null
+    | undefined;
+  showDialog() {
+    throw new Error('Method not implemented.');
+  }
+  closeDialog() {
+    throw new Error('Method not implemented.');
+  }
   title = 'de-todo-web-page';
-  countries: any[]|undefined;
+  countries: any[] | undefined;
   selectedCountry: any;
-visible: any;
+  visible: any;
 }

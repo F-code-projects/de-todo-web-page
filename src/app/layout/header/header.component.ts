@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { OverlayBadgeModule } from 'primeng/overlaybadge';
+import { ItemsPageComponent } from "../../features/items/pages/items.page.component";
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ import { OverlayBadgeModule } from 'primeng/overlaybadge';
     AvatarModule,
     BadgeModule,
     OverlayBadgeModule,
-  ],
+    ItemsPageComponent
+],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
