@@ -7,10 +7,6 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './layout/header/header.component';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
-import { ItemsService } from './features/items/services/items.service';
-import { ItemsPageComponent } from './features/items/pages/items.page.component';
-import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -45,7 +41,4 @@ export class AppComponent {
     throw new Error('Method not implemented.');
   }
   title = 'de-todo-web-page';
-  countries: any[] | undefined;
-  selectedCountry: any;
-  visible: any;
 }

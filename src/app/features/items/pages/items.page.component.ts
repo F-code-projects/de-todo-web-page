@@ -6,16 +6,17 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { ItemsService } from '../services/items.service';
 import { Item } from '../models/item.model';
 import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-items-page',
   standalone: true,
-  imports: [DataViewModule, TagModule, CommonModule, SelectButtonModule, FormsModule],
+  imports: [DataViewModule, TagModule, CommonModule, SelectButtonModule, FormsModule, ButtonModule],
   templateUrl: './items.page.component.html',
   styleUrl: './items.page.component.css',
 })
 export class ItemsPageComponent {
-  layout: 'list' | 'grid' = 'list';
+  layout: 'list' | 'grid' = 'grid';
 
   items = signal<any>([]);
 
@@ -39,5 +40,17 @@ export class ItemsPageComponent {
     } else {
       return null;
     }
+  }
+
+  getInventoryStatus(item: Item) {
+    if (item.item_amount > 10) {
+      return 'En Stock';
+    } else if (item.item_amount > 0 && item.item_amount <= 10) {
+      return 'Ultimo productos';
+    } else if (item.item_amount === 0) {
+      return 'Agotado';
+    }
+
+    return ""
   }
 }
