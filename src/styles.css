@@ -8,6 +8,7 @@
   --primary-color: #ee4037;
   --primary-hover-color: #eb564e;
   --contrast-color: #ffffff;
+  --light-backgrount-color: #ffffff;
 }
 
 body {
@@ -33,4 +34,14 @@ body {
 
 .p-button:hover {
   background-color: var(--primary-hover-color) !important;
+}
+
+/*Estilo del Dataview*/
+
+.p-dataview-content {
+  background-color: var(--light-backgrount-color) !important;
+}
+
+.p-dataview-header {
+  background-color: var(--light-backgrount-color) !important;
 }
