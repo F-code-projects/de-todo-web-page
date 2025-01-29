@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PrimeNG } from 'primeng/config';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DatePickerModule } from 'primeng/datepicker';
@@ -24,7 +25,7 @@ import { HeaderComponent } from './layout/header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent  implements OnInit {
   animations: any[] | undefined;
   animation: any;
   dynamicAnimationClasses:
@@ -41,4 +42,11 @@ export class AppComponent {
     throw new Error('Method not implemented.');
   }
   title = 'de-todo-web-page';
-}
+
+  constructor(private primeng: PrimeNG) {}
+
+  ngOnInit(): void {
+    this.primeng.ripple.set(true);
+  }
+
+} 

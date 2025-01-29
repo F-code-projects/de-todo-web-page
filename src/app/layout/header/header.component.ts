@@ -20,4 +20,11 @@ import { ItemsPageComponent } from "../../features/items/pages/items.page.compon
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  toggleDarkMode() {
+    const element = document.querySelector('html');
+    if (element) {
+      element.classList.toggle('my-app-dark');
+    }
+}
+}
