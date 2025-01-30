@@ -3,30 +3,47 @@ import { Component, signal } from '@angular/core';
 import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { ItemsService } from '../services/items.service';
-import { Item } from '../models/item.model';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { ItemsService } from '../../items/services/items.service';
+import { Item } from '../../items/models/item.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-items-page',
+  selector: 'app-category-page',
   standalone: true,
-  imports: [DataViewModule, TagModule, CommonModule, SelectButtonModule, FormsModule, ButtonModule],
-  templateUrl: './items.page.component.html',
-  styleUrl: './items.page.component.css',
+  imports: [
+    DataViewModule,
+    TagModule,
+    CommonModule,
+    SelectButtonModule,
+    FormsModule,
+    ButtonModule,
+  ],
+  templateUrl: './category.page.component.html',
+  styleUrl: './category.page.component.css',
 })
-export class ItemsPageComponent {
+export class CategoryPageComponent {
   layout: 'list' | 'grid' = 'grid';
+  categoryId: string = '';
 
   items = signal<any>([]);
 
   options = ['list', 'grid'];
 
-  constructor(private itemService: ItemsService) {}
+  constructor(
+    private itemService: ItemsService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.itemService.getItemByCategory().subscribe((data) => {
-      this.items.set([...data.slice(0, 12)]);
+    this.route.paramMap.subscribe((params) => {
+      this.categoryId = params.get('categoryId') || '';
+      console.log(this.categoryId);
+      this.itemService.getItemByCategory(this.categoryId).subscribe((data) => {
+        console.log(data);
+        this.items.set([...data.slice(0, 12)]);
+      });
     });
   }
 
@@ -51,6 +68,6 @@ export class ItemsPageComponent {
       return 'Agotado';
     }
 
-    return ""
+    return '';
   }
 }
