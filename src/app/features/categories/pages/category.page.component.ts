@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { ItemsService } from '../../items/services/items.service';
 import { Item } from '../../items/models/item.model';
 import { ActivatedRoute } from '@angular/router';
+import { ShoppingCarService } from '../../shopping_car/services/shopping_car.service';
 
 @Component({
   selector: 'app-category-page',
@@ -33,15 +34,14 @@ export class CategoryPageComponent {
 
   constructor(
     private itemService: ItemsService,
+    private shoppingCarService: ShoppingCarService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.categoryId = params.get('categoryId') || '';
-      console.log(this.categoryId);
       this.itemService.getItemByCategory(this.categoryId).subscribe((data) => {
-        console.log(data);
         this.items.set([...data.slice(0, 12)]);
       });
     });
@@ -69,5 +69,9 @@ export class CategoryPageComponent {
     }
 
     return '';
+  }
+
+  addItemToShoppingCar(product: Item) {
+    this.shoppingCarService.addItemToShoppingCar(product);
   }
 }

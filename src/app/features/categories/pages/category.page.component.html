@@ -63,7 +63,8 @@
                             <div class="flex gap-2">
                                 <button pButton icon="pi pi-shopping-cart" label="Agregaral carrito"
                                     [disabled]="getInventoryStatus(product) === 'Agotado'"
-                                    class="flex-auto whitespace-nowrap"></button>
+                                    class="flex-auto whitespace-nowrap"
+                                    (click)="addItemToShoppingCar(product)"></button>
                                 <button pButton icon="pi pi-heart" outlined></button>
                             </div>
                         </div>

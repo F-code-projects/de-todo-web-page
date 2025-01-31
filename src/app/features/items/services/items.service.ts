@@ -12,9 +12,7 @@ export class ItemsService {
   httpUrl = `${environment.API_URL}/item`;
 
   getItemByCategory(categoryId: string) {
-    console.log("CATEGORY" + categoryId)
     let url = `${this.httpUrl}?category_id=eq.` + categoryId + `&select=*`
-    console.log(url)
     return this.http.get<Array<Item>>(`${url}`);	
   }
 }
