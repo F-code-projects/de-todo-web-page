@@ -18,7 +18,7 @@ export class ShoppingCarService {
   }
 
   addItemToShoppingCar(product: Item) {
-    let shoppingCar: ShoppingCar = this.getShoppingCarFromLocalStorage();
+    let shoppingCar: ShoppingCar = this.getShoppingCar();
 
     const existingItem = shoppingCar.shoppingCarItems.find(
       (item) => item.item.id === product.id
@@ -40,14 +40,14 @@ export class ShoppingCarService {
   }
 
   getTotalItems(): number {
-    const shoppingCar = this.getShoppingCarFromLocalStorage();
+    const shoppingCar = this.getShoppingCar();
     return shoppingCar.shoppingCarItems.reduce(
       (total, item) => total + item.amount,
       0
     );
   }
 
-  private getShoppingCarFromLocalStorage(): ShoppingCar {
+  getShoppingCar(): ShoppingCar {
     if (typeof localStorage !== 'undefined') {
       const carList = localStorage.getItem('shoppingCar');
       if (carList) {
