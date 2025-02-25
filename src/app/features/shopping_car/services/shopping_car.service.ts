@@ -39,6 +39,27 @@ export class ShoppingCarService {
     this.updateItemsCount(); 
   }
 
+  removeItemFromShoppingCar(product: Item) {
+    let shoppingCar: ShoppingCar = this.getShoppingCar();
+
+    shoppingCar.shoppingCarItems = shoppingCar.shoppingCarItems.filter(
+      (item) => item.item.id !== product.id
+    );
+
+    console.log(product)
+    console.log(shoppingCar)
+
+    shoppingCar.totalPrice = this.calculateTotalPrice(shoppingCar);
+    this.saveShoppingCarToLocalStorage(shoppingCar);
+    this.updateItemsCount();
+  }
+
+  updateShoppingCarItemAmount(shoppingCar: ShoppingCar) {
+    shoppingCar.totalPrice = this.calculateTotalPrice(shoppingCar);
+    this.saveShoppingCarToLocalStorage(shoppingCar);
+    this.updateItemsCount();
+  }
+
   getTotalItems(): number {
     const shoppingCar = this.getShoppingCar();
     return shoppingCar.shoppingCarItems.reduce(
